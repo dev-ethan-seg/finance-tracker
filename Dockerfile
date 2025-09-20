@@ -22,6 +22,18 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Declare build arguments
+ARG AUTH_SECRET
+ARG AUTH_DISCORD_ID
+ARG AUTH_DISCORD_SECRET
+ARG DATABASE_URL
+
+# Set environment variables from build arguments
+ENV AUTH_SECRET=$AUTH_SECRET
+ENV AUTH_DISCORD_ID=$AUTH_DISCORD_ID
+ENV AUTH_DISCORD_SECRET=$AUTH_DISCORD_SECRET
+ENV DATABASE_URL=$DATABASE_URL
+
 # Set environment for build
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
