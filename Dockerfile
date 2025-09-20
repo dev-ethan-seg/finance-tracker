@@ -1,6 +1,6 @@
-# ====================
-# STAGE 1: Dependencies
-# ====================
+# ==================== 
+# STAGE 1: Dependencies 
+# ==================== 
 FROM node:20-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
@@ -9,7 +9,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY prisma ./prisma/
 
-# Install dependencies
+# Install ALL dependencies (including devDependencies for build)
 RUN npm ci
 
 # ====================
@@ -38,9 +38,6 @@ ENV DATABASE_URL=$DATABASE_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
-# Install all dependencies (including dev)
-RUN npm ci
-
 # Generate Prisma client
 RUN npx prisma generate
 
@@ -57,7 +54,7 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy built application
+# Copy necessary files
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
