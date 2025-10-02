@@ -26,12 +26,13 @@ echo "🛑 Stopping old container..."
 docker stop $CONTAINER_NAME 2>/dev/null || true
 docker rm $CONTAINER_NAME 2>/dev/null || true
 
-# Start new container
+# Start new container WITH ENVIRONMENT VARIABLES
 echo "▶️  Starting new container..."
 docker run -d \
   --name $CONTAINER_NAME \
   --restart unless-stopped \
   -p 80:3000 \
+  --env-file ~/.env \
   $IMAGE_NAME
 
 # Verify it's running
