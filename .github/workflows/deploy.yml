@@ -56,8 +56,10 @@ jobs:
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
-    
+
     steps:
+      - uses: actions/checkout@v3
+
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
         with:
@@ -65,20 +67,12 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Pull latest image
-            docker pull ${{ env.IMAGE_NAME }}:latest
-            
-            # Stop and remove old container
-            docker stop finance-tracker || true
-            docker rm finance-tracker || true
-            
-            # Run new container
-            docker run -d \
-              --name finance-tracker \
-              --restart unless-stopped \
-              -p 80:3000 \
-              -e NODE_ENV=production \
-              ${{ env.IMAGE_NAME }}:latest
-            
-            # Clean up old images
-            docker image prune -f
+            # Create scripts directory if it doesn't exist
+            mkdir -p ~/scripts
+
+            # Download latest deploy.sh
+            curl -o ~/scripts/deploy.sh https://raw.githubusercontent.com/${{ github.repository }}/main/scripts/deploy.sh
+            chmod +x ~/scripts/deploy.sh
+
+            # Run deployment script
+            ~/scripts/deploy.sh ${{ env.IMAGE_NAME }}:latest
