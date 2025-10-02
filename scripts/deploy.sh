@@ -27,11 +27,11 @@ docker stop $CONTAINER_NAME 2>/dev/null || true
 docker rm $CONTAINER_NAME 2>/dev/null || true
 
 # Load environment variables from .env file
-if [ -f "$HOME/.env" ]; then
-    echo "📝 Loading environment variables from $HOME/.env"
-    export $(cat $HOME/.env | grep -v '^#' | xargs)
+if [ -f "$HOME/finance-tracker/.env" ]; then
+    echo "📝 Loading environment variables from $HOME/finance-tracker/.env"
+    export $(cat $HOME/finance-tracker/.env | grep -v '^#' | xargs)
 else
-    echo "❌ Error: .env file not found at $HOME/.env"
+    echo "❌ Error: .env file not found at $HOME/finance-tracker/.env"
     exit 1
 fi
 
