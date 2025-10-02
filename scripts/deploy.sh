@@ -32,7 +32,7 @@ docker run -d \
   --name $CONTAINER_NAME \
   --restart unless-stopped \
   -p 80:3000 \
-  --env-file ~/.env \
+  --env-file .env \
   $IMAGE_NAME
 
 # Verify it's running
