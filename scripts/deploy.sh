@@ -26,13 +26,20 @@ echo "🛑 Stopping old container..."
 docker stop $CONTAINER_NAME 2>/dev/null || true
 docker rm $CONTAINER_NAME 2>/dev/null || true
 
+# Check if .env file exists
+if [ ! -f "$HOME/.env" ]; then
+    echo "❌ Error: .env file not found at $HOME/.env"
+    echo "Please create a .env file with required environment variables"
+    exit 1
+fi
+
 # Start new container WITH ENVIRONMENT VARIABLES
 echo "▶️  Starting new container..."
 docker run -d \
   --name $CONTAINER_NAME \
   --restart unless-stopped \
   -p 80:3000 \
-  --env-file .env \
+  --env-file $HOME/.env \
   $IMAGE_NAME
 
 # Verify it's running
