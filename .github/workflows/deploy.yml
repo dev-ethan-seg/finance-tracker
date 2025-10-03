@@ -45,14 +45,6 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ github.sha }}
-          build-args: |
-            AUTH_URL=${{ secrets.AUTH_URL }}
-            NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}
-            AUTH_TRUST_HOST=${{ secrets.AUTH_TRUST_HOST }}
-            AUTH_SECRET=${{ secrets.AUTH_SECRET }}
-            AUTH_DISCORD_ID=${{ secrets.AUTH_DISCORD_ID }}
-            AUTH_DISCORD_SECRET=${{ secrets.AUTH_DISCORD_SECRET }}
-            DATABASE_URL=${{ secrets.DATABASE_URL }}
           cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:buildcache
           cache-to: type=registry,ref=${{ env.IMAGE_NAME }}:buildcache,mode=max
   
