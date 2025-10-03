@@ -46,6 +46,9 @@ jobs:
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ github.sha }}
           build-args: |
+            AUTH_URL=${{ secrets.AUTH_URL }}
+            NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}
+            AUTH_TRUST_HOST=${{ secrets.AUTH_TRUST_HOST }}
             AUTH_SECRET=${{ secrets.AUTH_SECRET }}
             AUTH_DISCORD_ID=${{ secrets.AUTH_DISCORD_ID }}
             AUTH_DISCORD_SECRET=${{ secrets.AUTH_DISCORD_SECRET }}
