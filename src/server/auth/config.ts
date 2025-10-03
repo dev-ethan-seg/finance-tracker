@@ -44,6 +44,7 @@ export const authConfig = {
      */
   ],
   adapter: PrismaAdapter(db),
+  trustHost: true,
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
