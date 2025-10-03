@@ -40,7 +40,7 @@ echo "▶️  Starting new container..."
 docker run -d \
   --name $CONTAINER_NAME \
   --restart unless-stopped \
-  -p 80:3000 \
+  -p 8080:3000 \
   -e AUTH_SECRET="$AUTH_SECRET" \
   -e AUTH_DISCORD_ID="$AUTH_DISCORD_ID" \
   -e AUTH_DISCORD_SECRET="$AUTH_DISCORD_SECRET" \
