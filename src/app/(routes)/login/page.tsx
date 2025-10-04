@@ -11,7 +11,7 @@ export default async function SignInPage() {
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 px-4 py-12 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-12">
       <div className="bg-shape shape1"></div>
       <div className="bg-shape shape2"></div>
       <div className="bg-shape shape3"></div>
@@ -37,7 +37,7 @@ export default async function SignInPage() {
               </svg>
             </div>
             <h1 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              Finance Tracker
+              <span className="text-[hsl(280,100%,70%)]">Finance</span> Tracker
             </h1>
             <p className="text-sm font-medium text-gray-600 dark:text-gray-300 sm:text-base">
               Track your finances with ease
