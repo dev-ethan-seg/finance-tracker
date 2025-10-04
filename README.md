@@ -1,32 +1,38 @@
-# finance-tracker
-Manage and Track my Income, Expenses, and Investments
+# Finance Tracker
+Manage and Track my Income, Expenses, and Investments @ https://sgv-fintrack.mooo.com/
 
-# Create T3 App
+## Tech Stack
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+### Frontend
+- **Next.js 15** - React framework with server-side rendering and app router
+- **React 19** - UI library
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
+- **tRPC** - End-to-end typesafe APIs
 
-## What's next? How do I make an app with this?
+### Backend
+- **Next.js API Routes** - Serverless API endpoints
+- **tRPC Server** - Type-safe API layer
+- **NextAuth.js** - Authentication
+- **Prisma** - ORM for database management
+- **PostgreSQL** - Relational database (hosted on AWS RDS)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+### DevOps & Tools
+- **Docker** - Containerization platform
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Zod** - Schema validation
+- **Claude Code** - AI-powered development assistant
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## System Architecture
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### Infrastructure
+- **AWS EC2** - Hosting environment within VPC
+- **AWS RDS** - PostgreSQL database hosting
+- **AWS S3** - Image storage (planned for future implementation)
+- **Nginx** - Reverse proxy server running on EC2
 
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### Networking & Security
+- **Domain** - FreeDNS from afraid.org (sgv-fintrack.mooo.com)
+- **SSL/TLS** - Let's Encrypt certificate via Certbot
+- **Reverse Proxy** - Nginx for routing and SSL termination
